@@ -1,0 +1,354 @@
+backend:
+  name: git-gateway
+  branch: main
+publish_mode: editorial_workflow
+media_folder: media
+collections:
+  - label: Nexus Instances
+    name: instances
+    folder: _data/instances
+    format: json
+    create: true
+    identifier_field: meta_filename
+    label_singular: Nexus
+    slug: '{{fields.meta_filename}}'
+    fields:
+      - label: Filename
+        hint: '[a-zA-Z0-9_-] [1-36] [must be unique] [should not be changed once published]'
+        name: meta_filename
+        widget: nx-unique-filename
+        category: instances
+        required: true
+        pattern:
+          - '[a-zA-Z0-9_-]{1,36}'
+          - '[a-zA-Z0-9_-] [1-36] [must be unique]'
+      - label: Author
+        name: author
+        required: true
+        widget: object
+        summary: '{{fields.handle}}'
+        collapsed: false
+        fields:
+          - label: Handle
+            name: handle
+            hint: '[3-30]'
+            required: true
+            widget: string
+            pattern:
+              - '.{3,30}'
+              - '[3-30]'
+          - label: About
+            name: about
+            hint: '[0-400]'
+            required: false
+            widget: text
+            pattern:
+              - '.{0,400}'
+              - '[0-400]'
+          - label: Url
+            name: url
+            hint: '[http]'
+            required: true
+            widget: string
+            pattern:
+              - '^https?:\/\/.+'
+              - '[http]'
+      - label: Threads
+        name: threads
+        collapsed: false
+        required: true
+        widget: list
+        allow_add: true
+        summary: '{{fields.title}}'
+        label_singular: Thread
+        max: 100
+        min: 1
+        add_to_top: false
+        fields:
+          - label: id
+            name: id
+            hint: '[a-zA-Z0-9-] [3-36] [must be unique] [should not be changed once published]'
+            required: true
+            widget: nx-unique-thread
+            pattern:
+              - '^[a-zA-Z0-9-]{3,36}$'
+              - '[a-zA-Z0-9-] [3-36] [must be unique]'
+          - label: Title
+            name: title
+            required: true
+            widget: string
+            hint: '[3-30]'
+            pattern:
+              - '.{3,30}'
+              - '[3-30]'
+          - label: Description
+            name: description
+            required: false
+            hint: '[0-400]'
+            widget: text
+            pattern:
+              - '.{0,400}'
+              - '[0-400]'
+          - label: Content / Timestamp
+            name: content_timestamp
+            widget: datetime
+            required: true
+            date_format: YYYY-MM-DD
+            time_format: 'HH:mm'
+            picker_utc: false
+          - label: Content / Main
+            name: content_main
+            required: true
+            hint: '[1-1000]'
+            widget: text
+            pattern:
+              - '.{1,1000}'
+              - '[1-1000]'
+          - label: Content / Aside
+            name: content_aside
+            hint: '[0-400]'
+            pattern:
+              - '.{0,400}'
+              - '[0-400]'
+            required: false
+            widget: text
+          - label: Content / Media / Url
+            name: content_media_url
+            required: false
+            widget: file
+            choose_url: true
+            media_library:
+              config:
+                multiple: false
+                max_file_size: 2048000
+          - label: Content / Media / Type
+            name: content_media_type
+            required: false
+            widget: select
+            multiple: false
+            options:
+              - ''
+              - page
+              - image
+              - video
+              - audio
+              - youtube
+              - vimeo
+              - soundcloud
+          - label: Thread / Content / Media / Caption
+            hint: '[0-200]'
+            name: content_media_caption
+            required: false
+            widget: text
+            pattern:
+              - '.{0,200}'
+              - '[0-200]'
+          - label: Linked
+            name: linked
+            required: false
+            widget: list
+            allow_add: true
+            summary: '{{fields.url}}'
+            label_singular: Linked Nexus
+            max: 100
+            min: 0
+            add_to_top: false
+            fields:
+              - label: Url
+                name: url
+                hint: '[http]'
+                required: true
+                widget: string
+                pattern:
+                  - '^https?:\/\/.+'
+                  - '[http]'
+  - label: Markdown Pages
+    name: pages
+    folder: _data/pages
+    format: json
+    create: true
+    identifier_field: meta_filename
+    label_singular: Page
+    slug: '{{fields.meta_filename}}'
+    fields:
+      - label: Filename
+        hint: '[a-zA-Z0-9_-] [1-36] [must be unique] [should not be changed once published]'
+        name: meta_filename
+        widget: nx-unique-filename
+        category: pages
+        required: true
+        pattern:
+          - '[a-zA-Z0-9_-]{1,36}'
+          - '[a-zA-Z0-9_-] [1-36] [must be unique]'
+      - label: Content
+        name: content
+        widget: markdown                  
+  - label: Settings
+    name: settings
+    format: json
+    files:  
+      - label: Site
+        name: _site
+        file: _data/settings/_site.json
+        fields:
+          - label: Url
+            hint: '[http] [no trailing slash]'
+            name: url
+            widget: string
+            required: true
+            pattern:
+              - '^https?:\/\/.+[^/]$'
+              - '[http] [no trailing slash]'
+          - label: Name
+            name: name
+            widget: string
+            required: true
+            default: Nexus             
+          - label: Language
+            name: lang
+            widget: string
+            default: en
+            required: true
+          - label: Description
+            name: description
+            widget: text
+            required: true
+            default: Curated Content
+          - label: Front Page
+            name: front_page
+            widget: select
+            multiple: false
+            required: true
+            default: 'default Nexus instance'
+            options: ['default Nexus instance', 'default Markdown page']   
+          - label: Favicons
+            name: favicons
+            widget: object
+            collapsed: true
+            required: true
+            summary: Files
+            fields:
+              - label: ico
+                hint: '[32 x 32 px] [favicon.ico]'
+                name: favicon-ico
+                widget: file
+                required: true
+                media_folder: "/assets/meta/"
+                choose_url: false
+                media_library:
+                  config:
+                    multiple: false
+                    max_file_size: 50000  
+              - label: Apple Touch
+                hint: '[180 x 180 px] [apple-touch-icon.png]'
+                name: apple-touch-icon-png
+                widget: file
+                required: true
+                media_folder: "/assets/meta/"
+                choose_url: false
+                media_library:
+                  config:
+                    multiple: false
+                    max_file_size: 50000 
+              - label: Android Medium
+                hint: '[192 x 192 px] [icon-192.png]'
+                name: icon-192-png
+                widget: file
+                required: true
+                media_folder: "/assets/meta/"
+                choose_url: false
+                media_library:
+                  config:
+                    multiple: false
+                    max_file_size: 50000 
+              - label: Android Large
+                hint: '[512 x 512 px] [icon-512.png]'
+                name: icon-512-png
+                widget: file
+                required: true
+                media_folder: "/assets/meta/"
+                choose_url: false
+                media_library:
+                  config:
+                    multiple: false
+                    max_file_size: 100000 
+              - label: svg
+                hint: ' [icon.svg]'
+                name: icon-svg
+                widget: file
+                required: true
+                choose_url: false
+                media_folder: "/assets/meta/"
+                media_library:
+                  config:
+                    multiple: false
+                    max_file_size: 50000 
+              - label: Open Graph
+                hint: '[1200 x 630 px] [og-img.svg]'
+                name: og-img-svg
+                widget: file
+                required: true
+                media_folder: "/assets/meta/"
+                choose_url: false
+                media_library:
+                  config:
+                    multiple: false
+                    max_file_size: 500000       
+      - label: Nexus Instances
+        name: _instances
+        file: _data/settings/_instances.json
+        fields:
+          - label: Default Nexus Instance
+            name: default_instance
+            widget: relation
+            required: true
+            collection: instances
+            search_fields:
+              - meta_filename
+            value_field: meta_filename
+          - label: Load First Thread
+            name: load_first_thread
+            widget: boolean
+            default: true
+            required: true
+          - label: Reader App Url
+            name: script_url
+            widget: string
+            default: https://cdn.jsdelivr.net/gh/I-is-as-I-does/Nexus@^1.1.3/dist/js/NxFolio.js
+            required: true
+          - label: Custom Theme Url
+            name: custom_theme_url
+            widget: string
+            required: false
+          - label: Default App Language
+            name: default_lang
+            widget: string
+            required: false
+          - label: Info
+            name: info
+            widget: info
+            text: 'Available apps, themes, languages: '
+            url: 'https://nexus-dock.github.io/options'
+            required: true
+      - label: Markdown Pages
+        name: _pages
+        file: _data/settings/_pages.json
+        fields:
+          - label: Default Markdown Page
+            name: default_page
+            widget: relation
+            required: true
+            collection: pages
+            search_fields:
+              - meta_filename
+            value_field: meta_filename
+          - label: Custom Theme Url
+            name: custom_theme_url
+            widget: string
+            required: false
+          - label: Info
+            name: info
+            widget: info
+            text: 'Drop-in alternative themes: '
+            url: 'https://github.com/dohliam/dropin-minimal-css'
+            required: true

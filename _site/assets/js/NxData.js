@@ -1,0 +1,1 @@
+window.NxData = {"site":"http://localhost:8080","instances":{"list":["demo-nexus"],"deflt":"http://localhost:8080/source/demo-nexus.json","script":"https://cdn.jsdelivr.net/gh/I-is-as-I-does/Nexus@^1.1.3/dist/js/NxFolio.js","lang":"en","style":""},"pages":{"list":["demo-page"],"deflt":"http://localhost:8080/pages/demo-page","style":"/assets/css/NxPages.css"}}

@@ -1,0 +1,22 @@
+---js
+{
+layout: "base.njk",
+permalink: "index.html",
+eleventyComputed: {
+  stylesheet: data => {
+    if(data.settings._site.front_page !== "default Nexus instance") {
+        if(data.settings._pages.custom_theme_url){
+      return data.settings._pages.custom_theme_url
+        }
+          return '/assets/css/NxPages.css'
+    }
+  return '';
+  }
+}
+}
+---
+{% if settings._site.front_page === "default Nexus instance" %}
+{% include "nx-default.njk" %}
+{% else %}
+{% include "page-default.njk" %}
+{% endif %}

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="{{ settings._site.lang }}">
+  <head>
+  {% include "./meta.njk" %}
+  {% if stylesheet %}<link rel="stylesheet" type="text/css" href="{{stylesheet}}"></link>{% endif %}
+  </head>
+  <body>
+  <main>
+{{ content | safe }}
+</main>
+  {% if page.script %}<script src="{{page.script}}"></script>{% endif %}
+  </body>
+</html>

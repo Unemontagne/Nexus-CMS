@@ -1,0 +1,15 @@
+{
+  "lang": "en",
+  "url": "http://localhost:8080",
+  "name": "Nexus",
+  "description": "Nexus is a peer-to-peer Micro Social Network.",
+  "front_page": "default Nexus instance",
+  "favicons": {
+    "favicon-ico": "/assets/meta/favicon.ico",
+    "apple-touch-icon-png": "/assets/meta/apple-touch-icon.png",
+    "icon-192-png": "/assets/meta/icon-192.png",
+    "icon-512-png": "/assets/meta/icon-512.png",
+    "icon-svg": "/assets/meta/icon.svg",
+    "og-img-svg": "/assets/meta/og-img.png"
+  }
+}

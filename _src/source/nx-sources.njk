@@ -1,0 +1,39 @@
+---js
+{
+  pagination: {
+    data: "collections.NxInstances",
+    size: 1,
+    alias: "instance",
+    resolve: "values"
+  },
+permalink: "source/{{instance.meta_filename}}.json"
+}
+---
+{
+     "nexus": "https://nexus-dock.github.io/",
+     "author":{
+         "handle": "{{ instance.author.handle }}",
+         "about": "{% if instance.author.about %}{{ instance.author.about }}{% endif %}",
+         "url": "{{ instance.author.url }}"
+     },
+     "threads":[{% for thread in instance.threads %}
+     {% if not loop.first %},{% endif %}{
+        "id": "{{ thread.id }}",
+        "title": "{{ thread.title }}",
+        "description": "{% if thread.description %}{{ thread.description }}{% endif %}",
+        "content": {
+          "timestamp": "{{ thread.content_timestamp }}",
+          "main": "{{ thread.content_main }}",
+          "aside": "{% if thread.content_aside %}{{ thread.content_aside }}{% endif %}",
+          "media": {
+            "url": "{% MediaUrl thread.content_media_url, settings._site.url %}",
+            "type": "{% if thread.content_media_type %}{{ thread.content_media_type }}{% endif %}",
+            "caption": "{% if thread.content_media_caption %}{{ thread.content_media_caption }}{% endif %}"
+      }
+    },
+    "linked": [{% if thread.linked %}{% for link in thread.linked %}
+     {% if not loop.first %},{% endif %}"{{link.url}}"{% endfor %}{% endif %}
+    ]
+         }{% endfor %}
+          ]
+}

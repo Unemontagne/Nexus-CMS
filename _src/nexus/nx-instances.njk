@@ -1,0 +1,14 @@
+---js
+{
+  layout: "base.njk",
+  pagination: {
+    data: "collections.NxInstances",
+    size: 1,
+    alias: "instance",
+    resolve: "values"
+  },
+permalink: "nexus/{{instance.meta_filename}}/index.html"
+}
+---
+
+{% include "nx-snippet.njk" %}

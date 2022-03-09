@@ -1,0 +1,22 @@
+---js
+{
+  layout: "base.njk",
+  pagination: {
+    data: "collections.SitePages",
+    size: 1,
+    alias: "pg",
+    resolve: "values"
+  },
+permalink: "pages/{{pg.meta_filename}}/index.html",
+eleventyComputed: {
+  stylesheet: data => {
+    if(data.settings._pages.custom_theme_url){
+      return data.settings._pages.custom_theme_url
+    }
+    return '/assets/css/NxPages.css'
+  }
+}
+  
+}
+---
+{{ pg.content | safe }}

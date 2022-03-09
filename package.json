@@ -1,0 +1,45 @@
+{
+    "name": "nexus-cms",
+    "version": "1.0.0",
+    "description": "Nexus CMS / made with 11ty + Netlify CMS",
+    "main": "",
+    "private": true,
+    "scripts": {
+        "clean": "rimraf _site",
+        "serve:eleventy": "eleventy --serve",
+        "serve": "npm-run-all clean --parallel serve:*",
+        "build:eleventy": "eleventy",
+        "build": "run-s clean build:*",
+        "debug": "DEBUG=Eleventy* npx @11ty/eleventy --dryrun"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/I-is-as-I-does/Nexus-CMS.git"
+    },
+    "keywords": [
+        "nexus",
+        "netlify-cms",
+        "11ty"
+    ],
+    "author": "i-is-as-i-does",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/I-is-as-I-does/Nexus-CMS/issues"
+    },
+    "homepage": "https://github.com/I-is-as-I-does/Nexus-CMS#readme",
+    "devDependencies": {
+        "@11ty/eleventy": "^1.0.0",
+        "@babel/core": "^7.17.5",
+        "@babel/plugin-transform-runtime": "^7.17.0",
+        "@babel/preset-env": "^7.16.11",
+        "babel-loader": "^8.2.3",
+        "clean-css": "^5.2.4",
+        "html-minifier": "^4.0.0",
+        "npm-run-all": "^4.1.5",
+        "rimraf": "^3.0.2",
+        "uglify-js": "^3.15.1"
+    },
+    "dependencies": {
+        "markdown-it": "^12.3.2"
+    }
+}
