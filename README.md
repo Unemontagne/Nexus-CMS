@@ -21,6 +21,7 @@ tbd
 
 Nexus CMS might get new features, fixes and updates.  
 By **forking** the original repository, keeping in sync is easy: 
+
 - go to the [Nexus CMS repository](https://github.com/I-is-as-I-does/Nexus-CMS)
 - select the `Fetch upstream` drop-down
 - click `Fetch and merge`.
@@ -39,13 +40,14 @@ You can set the `-force` flag to overwrite the destination branch.
 
 ### Switch to Private
 
-By default the created repository will be public. You can change it to private, but will need to regenerate your Netlify token.  
+By default the created repository will be public.  
+You can change it to private, but will need to regenerate your Netlify token.  
 Go to your Netlify site dashboard, Settings > Identity > Services, click "Edit settings" then "Generate access token in GitHub".
 
 ### Run Locally
 
-Clone the repository locally and run: `$ npm install`.
-In `admin/config.yml`: add `local_backend: true`.  
+Clone the repository locally and run: `$ npm install`.  
+In `admin/config.yml`: add `local_backend: true`.   
 
 Then run 2 terminals in parallel:  
     - first: `$ npm run serve` or `$ npm run build`  
@@ -56,7 +58,7 @@ Go to `localhost:PORT` for website and `localhost:PORT/admin` for admin (PORT is
 ### Host anywhere
  
 All built files are in the `_site/` folder.  
-Drop the content of this folder anywhere you want.
+Drop the content of this folder anywhere you want.  
 
 If you plan to host the built files on an Apache server: required `.htaccess` files are already prepared.  
 Open `.eleventy.js` and simply uncomment the two indicated lines at the beginning of the config.  
@@ -65,9 +67,9 @@ Open `.eleventy.js` and simply uncomment the two indicated lines at the beginnin
 
 You can augment your 11ty site; add custom widgets to Netlify CMS; build your own Nexus app.
 
-Nexus: [github.com/I-is-as-I-does/Nexus](https://github.com/I-is-as-I-does/Nexus)
-Eleventy: [github.com/11ty/eleventy/](https://github.com/11ty/eleventy/)
-Netlify CMS: [github.com/netlify/netlify-cms](https://github.com/netlify/netlify-cms)
+Nexus: [github.com/I-is-as-I-does/Nexus](https://github.com/I-is-as-I-does/Nexus)  
+Eleventy: [github.com/11ty/eleventy/](https://github.com/11ty/eleventy/)  
+Netlify CMS: [github.com/netlify/netlify-cms](https://github.com/netlify/netlify-cms)  
 
 ## Toss a coin to the dev
 
