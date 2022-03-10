@@ -1,6 +1,10 @@
 
 const { NxData, CMS } = window
 
+if(!NxData.site){
+  NxData.site = window.location.hostname;
+}
+
 /* previews */
 
 /* https://www.npmjs.com/package/htm */
