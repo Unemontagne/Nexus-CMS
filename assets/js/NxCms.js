@@ -1,8 +1,9 @@
 
-const { NxData, CMS } = window
+var { NxData, CMS } = window
 
 if(!NxData.site){
-  NxData.site = window.location.hostname;
+  NxData.site = window.location.href.split('/admin')[0];
+  NxData.instances.deflt = NxData.site + '/' + NxData.instances.deflt;
 }
 
 /* previews */
@@ -109,6 +110,7 @@ return (
 const html = htm.bind(h)
 const changeEvt = new CustomEvent('change')
 const parser = new DOMParser() 
+const mdWidget = CMS.getWidget('markdown');
 
 function linkElm(props, href) {
     var link = props.document.createElement('link')
@@ -147,6 +149,8 @@ function defaultNx(props) {
     nx.dataset.style = NxData.instances.style
     return nx
   }
+
+
   
 function fetchPage(path) {
     return fetch(path)
@@ -157,8 +161,8 @@ function fetchPage(path) {
         var doc = parser.parseFromString(html, 'text/html')
         return doc.body.querySelector('main')
       })
-      .catch(function (err) {
-        console.warn('Something went wrong.', err)
+      .catch(function () {
+        return "Page is not responding. If you've just created it, wait a few seconds, then toggle preview pane."
       })
   }
   
@@ -240,7 +244,10 @@ const InstancesPreview = createClass({
           var linked = this.props.entry.getIn(['data', 'threads', i, 'linked'], null)
           if (linked) {
             for (var j = 0; j < linked.size; j++) {
-              th.linked.push(this.props.entry.getIn(['data', 'threads', i, 'linked', j, 'url'], null))
+              var lkUrl = this.props.entry.getIn(['data', 'threads', i, 'linked', j, 'url'], null)
+              if(lkUrl){
+                th.linked.push(lkUrl)
+              }
             }
           }
   
@@ -286,15 +293,42 @@ const InstancesPreview = createClass({
       this.nxelm.dataset.style = this.props.entry.getIn(['data', 'custom_theme_url'], null)
       var inst = this.props.entry.getIn(['data', 'default_instance'], null)
       var src = NxData.site + '/source/' + inst + '.json'
-      if (this.props.entry.getIn(['data', 'load_first_thread'], null)) {
-        var threads = this.props.fieldsMetaData
-          .getIn(['default_instance', 'instances', inst, 'threads'])
-          .toJS()
-        if (threads.length && threads[0].id) {
-          src += '#' + threads[0].id
-        }
+      var instsrc = this.props.fieldsMetaData
+      .getIn(['default_instance', 'instances', inst])
+      .toJS(); 
+      if (this.props.entry.getIn(['data', 'load_first_thread'], null) && instsrc.threads.length && instsrc.threads[0].id) {
+          src += '#' + instsrc.threads[0].id
       }
+      var srcdoc = ''
+      if(src !== this.nxelm.dataset.src){
+        var threads = []
+          for (var i = 0; i < instsrc.threads.length; i++) {
+            threads.push({ 
+              id: instsrc.threads[i].id,
+              title: instsrc.threads[i].title,
+              description: instsrc.threads[i].description ? instsrc.threads[i].description : '',
+              content: {
+                timestamp: instsrc.threads[i].content_timestamp,
+                main: instsrc.threads[i].content_main,
+                aside: instsrc.threads[i].content_aside ? instsrc.threads[i].content_aside : '',
+                media: {
+                  url: instsrc.threads[i].content_media_url ? instsrc.threads[i].content_media_url : '',
+                  type: instsrc.threads[i].content_media_type ? instsrc.threads[i].content_media_type : 'page',
+                  caption: instsrc.threads[i].content_media_caption ? instsrc.threads[i].content_media_caption : ''
+                } 
+              }, 
+              linked: instsrc.threads[i].linked ? instsrc.threads[i].linked.map(l => l.url) : []
+            });
+          }
+         srcdoc = JSON.stringify({
+            nexus: 'https://nexus-dock.github.io/',
+            author: instsrc.author,
+            threads: threads
+          })
+        }
       this.nxelm.dataset.src = src
+      this.nxelm.dataset.srcdoc = srcdoc
+
       scriptElm(this.props, this.props.entry.getIn(['data', 'script_url'], null))
     },
     componentDidMount() {
@@ -316,29 +350,30 @@ const InstancesPreview = createClass({
       }
       return NxData.site + '/assets/css/NxPages.css'
     },
-    componentDidUpdate(prevProps) {
-      var defltpage = this.props.entry.getIn(['data', 'default_page'], null)
-      if (defltpage !== prevProps.entry.getIn(['data', 'default_page'], null)) {
-        fetchPage(NxData.site + '/pages/' + defltpage + '/index.html').then((content) => {
-          this.dfltPagePrev.firstChild.replaceWith(content)
-        })
-      } else {
+    componentDidUpdate() {
         var theme = this.resolveTheme()
         if (theme !== this.styleLink.href) {
           this.styleLink.href = theme
         }
-      }
     },
     componentDidMount() {
       this.styleLink = linkElm(this.props, this.resolveTheme())
-  
-      fetchPage(NxData.pages.deflt + '/index.html').then((content) => {
-        this.dfltPagePrev.append(content)
-      })
     },
     render: function () {
+      var prevwProps = {
+        value : null
+      }
+      var deflt = this.props.entry.getIn(['data', 'default_page'], null)
+      if(deflt){
+        var content = this.props.fieldsMetaData.getIn(['default_page', 'pages', deflt, 'content']);
+        if(content){
+          prevwProps.value = content;
+        }     
+      }
+      var mdPrevw = new mdWidget.preview(prevwProps);
+      var mdRender = mdPrevw.render();
       return html`<p class="nx-slug">${NxData.site}/pages</p>
-        <div ref=${(el) => (this.dfltPagePrev = el)} id="preview"></div>`
+        <div id="preview"><main>${mdRender}</main></div>`
     },
   })
 
@@ -406,6 +441,7 @@ const InstancesPreview = createClass({
     CMS.registerPreviewTemplate('_pages', PagesSettPreview)
     CMS.registerPreviewTemplate('instances', InstancesPreview)
     CMS.registerPreviewTemplate('pages', PagesPreview)
+
 /* widgets */
 
 const StrWidget = CMS.getWidget('string')

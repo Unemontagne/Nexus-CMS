@@ -1,7 +1,7 @@
 backend:
   name: git-gateway
   branch: main
-publish_mode: editorial_workflow
+local_backend: true
 media_folder: media
 collections:
   - label: Nexus Instances
@@ -123,6 +123,7 @@ collections:
                 max_file_size: 2048000
           - label: Content / Media / Type
             name: content_media_type
+            hint: '[required if media]'
             required: false
             widget: select
             multiple: false
@@ -314,7 +315,7 @@ collections:
           - label: Reader App Url
             name: script_url
             widget: string
-            default: https://cdn.jsdelivr.net/gh/I-is-as-I-does/Nexus@^1.1.3/dist/js/NxFolio.js
+            default: https://cdn.jsdelivr.net/gh/I-is-as-I-does/Nexus@^1.1.4/dist/js/NxFolio.js
             required: true
           - label: Custom Theme Url
             name: custom_theme_url
@@ -329,7 +330,7 @@ collections:
             widget: info
             text: 'Available apps, themes, languages: '
             url: 'https://nexus-dock.github.io/options'
-            required: true
+            required: false
       - label: Markdown Pages
         name: _pages
         file: _data/settings/_pages.json
@@ -351,4 +352,4 @@ collections:
             widget: info
             text: 'Drop-in alternative themes: '
             url: 'https://github.com/dohliam/dropin-minimal-css'
-            required: true
+            required: false

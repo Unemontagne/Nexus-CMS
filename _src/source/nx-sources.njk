@@ -27,7 +27,7 @@ permalink: "source/{{instance.meta_filename}}.json"
           "aside": "{% if thread.content_aside %}{{ thread.content_aside }}{% endif %}",
           "media": {
             "url": "{% MediaUrl thread.content_media_url, settings._site.url %}",
-            "type": "{% if thread.content_media_type %}{{ thread.content_media_type }}{% endif %}",
+            "type": "{% if thread.content_media_type %}{{ thread.content_media_type }}{% elif thread.content_media_url and settings._site.url %}page{% endif %}",
             "caption": "{% if thread.content_media_caption %}{{ thread.content_media_caption }}{% endif %}"
       }
     },

@@ -10,7 +10,8 @@
       "content_timestamp": "2022-03-12T17:20:00.000Z",
       "id": "th-1",
       "title": "Nexus",
-      "content_main": "This is a demo Nexus instance."
+      "content_main": "This is a demo Nexus instance.",
+      "linked": []
     }
   ]
 }

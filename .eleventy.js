@@ -55,16 +55,21 @@ module.exports = function(eleventyConfig) {
 
 // Short Codes
   eleventyConfig.addShortcode("MediaUrl", function(media, host) {
-    if(media && media.slice(0,4) !== "http"){
-      if(media[0] !== "/"){
-        media = "/"+media
+    var url = ''
+    if(media){
+      if(media.slice(0,4) === "http"){
+        url = media
+      } else if(host) {
+        if(media[0] !== "/"){
+          media = "/"+media
+        }
+        if(host.slice(-1) === "/"){
+            host = host.slice(0,-1)
+        }
+        url = host+media
       }
-      if(host.slice(-1) === "/"){
-          host = host.slice(0,-1)
-      }
-      media = host+media
   }
-  return media
+  return url
   });
 
   // Minify CSS
