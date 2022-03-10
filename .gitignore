@@ -4,3 +4,4 @@ yarn.lock
 node_modules
 .fridge
 _temp-docs
+_site/*

@@ -16,9 +16,7 @@ Auto deploy needs to be set up and some additionnal testing needs to be done.
   - [I'm an old dog](#im-an-old-dog)
   - [Step-by-step please](#step-by-step-please)
 - [Use](#use)
-- [Update](#update)
 - [Advanced](#advanced)
-  - [Sync with CLI](#sync-with-cli)
   - [Switch to Private](#switch-to-private)
   - [Run Locally](#run-locally)
   - [Host anywhere](#host-anywhere)
@@ -78,27 +76,7 @@ If you're unfamiliar with GitHub or Netlify, [About Third Parties](#about-third-
 
 tbd
 
-## Update
-
-Nexus CMS might get new features, fixes and updates.  
-By **forking** the original repository, keeping in sync is easy: 
-
-- go to the [Nexus CMS repository](https://github.com/I-is-as-I-does/Nexus-CMS)
-- select the `Fetch upstream` drop-down
-- click `Fetch and merge`.
-
-
 ## Advanced
-
-### Sync with CLI
-
-To keep your fork up-to-date, you can also resort to GitHub CLI.  
-Use `gh repo sync` subcommand and supply your fork name as argument.  
-
-`$ gh repo sync owner/cli-fork`
-
-If the changes from the upstream repository cause conflict then the GitHub CLI can't sync.  
-You can set the `-force` flag to overwrite the destination branch.
 
 ### Switch to Private
 
