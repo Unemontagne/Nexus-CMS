@@ -2,6 +2,8 @@
 
 A one-click solution to create and auto-deploy Nexus instances... and markdown pages!  
 
+<a href="https://app.netlify.com/start/deploy?repository=https://github.com/I-is-as-I-does/Nexus-CMS"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
+
 > Under the hood, Nexus CMS makes use of **11ty** to generate files, and **Netlify CMS** for a user-friendly backend.  
 
 /!\ THIS IS NOT COOKED YET.  
