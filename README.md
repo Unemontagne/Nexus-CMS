@@ -10,7 +10,7 @@ Toss a coin to the dev:
 <a href='https://ko-fi.com/I2I17EOYP' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi2.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 /!\ THIS IS NOT COOKED YET.  
-Auto deploy needs to be set up and some additionnal testing needs to be done.
+Some additionnal testing needs to be done.
 
 - [Install](#install)
   - [I'm an old dog](#im-an-old-dog)
@@ -29,6 +29,7 @@ Auto deploy needs to be set up and some additionnal testing needs to be done.
     - [Storage limitations](#storage-limitations)
   - [Netlify CMS](#netlify-cms)
   - [11ty](#11ty)
+  - [Markdown](#markdown)
 - [About Nexus](#about-nexus)
 
 ## Install
@@ -154,6 +155,10 @@ YouTube, Vimeo and Soundcloud urls are also supported.
 tbd
 
 ### 11ty
+
+tbd
+
+### Markdown
 
 tbd
 

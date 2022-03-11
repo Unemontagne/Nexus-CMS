@@ -3,7 +3,3 @@
 yarn.lock
 node_modules
 .fridge
-_temp-docs
-_site/*/*
-_site/*.html
-assets/js/NxCms-dev.js
