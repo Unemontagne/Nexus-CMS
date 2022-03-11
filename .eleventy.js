@@ -6,9 +6,6 @@ const NOT_FOUND_PATH = "_site/404.html";
 
 module.exports = function(eleventyConfig) {
 
-  /* If you're NOT using Netlify as a hosting service, set to false */
-  eleventyConfig.addGlobalData("onNetlify", true);
-
   /* If you plan to host the built files on an Apache server, 
      htaccess files are already prepared; 
      simply uncomment the two following lines: */

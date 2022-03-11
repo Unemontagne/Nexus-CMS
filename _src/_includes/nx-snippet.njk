@@ -1,5 +1,5 @@
 <div id="Nexus" 
-data-src="{% if settings._site.url %}{{settings._site.url}}/{% endif %}source/{{instance.meta_filename}}.json{% if settings._instances.load_first_thread %}#{{instance.threads[0].thread_id}}{% endif %}"
+data-src="{% if settings._site.url %}{{settings._site.url}}/{% endif %}source/{{instance.meta_filename}}.json{% if settings._instances.load_first_thread %}#{{instance.threads[0].id}}{% endif %}"
 {% if settings._instances.default_lang and settings._instances.default_lang !== "en" %} data-lang="{{ settings._instances.default_lang }}"{% endif %}
 {% if settings._instances.custom_theme_url %} data-style="{{ settings._instances.custom_theme_url }}"{% endif %}>
 </div>

@@ -17,8 +17,8 @@ class NxData {
         }
         if(catg === "instances"){
           nf.deflt = data.settings._site.url+"/source/"+nf.list[index]+".json"
-          if(data.settings._instances.load_first_thread && data.instances[index].threads.length){
-            nf.deflt += "#" + data.instances[index].threads[0].id
+          if(data.settings._instances.load_first_thread && data.instances[nf.list[index]].threads && data.instances[nf.list[index]].threads.length){
+            nf.deflt += "#" + data.instances[nf.list[index]].threads[0].id
             }
         } else {
           nf.deflt = data.settings._site.url+"/pages/"+nf.list[index]
@@ -48,7 +48,6 @@ class NxData {
       }
       var nxdata = {
         site: {
-          onNetlify: data.onNetlify,
           url: data.settings._site.url
         },
         instances: instances,

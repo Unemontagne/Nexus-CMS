@@ -327,7 +327,7 @@ collections:
             name: info
             widget: info
             text: 'Available apps, themes, languages: '
-            url: 'https://nexus-dock.github.io/options'
+            url: 'https://nexus-dock.github.io/pages/cms#nexus-options'
             required: false
       - label: Static Pages
         name: _pages
