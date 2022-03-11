@@ -1,1 +1,0 @@
-window.NxData = {"site":"","instances":{"list":["demo-nexus"],"deflt":"/source/demo-nexus.json","script":"https://cdn.jsdelivr.net/gh/I-is-as-I-does/Nexus@^1.1.4/dist/js/NxFolio.js","lang":"en","style":""},"pages":{"list":["demo-page"],"deflt":"/pages/demo-page","style":"/assets/css/NxPages.css"}}

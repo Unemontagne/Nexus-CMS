@@ -3,3 +3,5 @@
 yarn.lock
 node_modules
 .fridge
+_site/*
+_dev/*

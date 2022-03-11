@@ -161,7 +161,7 @@ collections:
                 pattern:
                   - '^https?:\/\/.+'
                   - '[http]'
-  - label: Markdown Pages
+  - label: Static Pages
     name: pages
     folder: _data/pages
     format: json
@@ -197,7 +197,7 @@ collections:
             required: true
             pattern:
               - '^https?:\/\/.+[^/]$'
-              - '[http] [no trailing slash]'
+              - '[http] [no trailing slash]'   
           - label: Name
             name: name
             widget: string
@@ -219,7 +219,7 @@ collections:
             multiple: false
             required: true
             default: 'default Nexus instance'
-            options: ['default Nexus instance', 'default Markdown page']   
+            options: ['default Nexus instance', 'default Static page']   
           - label: Favicons
             name: favicons
             widget: object
@@ -329,11 +329,11 @@ collections:
             text: 'Available apps, themes, languages: '
             url: 'https://nexus-dock.github.io/options'
             required: false
-      - label: Markdown Pages
+      - label: Static Pages
         name: _pages
         file: _data/settings/_pages.json
         fields:
-          - label: Default Markdown Page
+          - label: Default Static Page
             name: default_page
             widget: relation
             required: true

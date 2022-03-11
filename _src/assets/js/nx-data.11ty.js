@@ -47,7 +47,10 @@ class NxData {
         pages.style = '/assets/css/NxPages.css'
       }
       var nxdata = {
-        site: data.settings._site.url,
+        site: {
+          onNetlify: data.onNetlify,
+          url: data.settings._site.url
+        },
         instances: instances,
         pages: pages
       }
