@@ -1,25 +1,21 @@
----js
-{
-layout: "base.njk",
-eleventyComputed: {
-  stylesheets: data => {
-    var st = []
-    if(data.settings._pages.custom_theme_url){
-     st.push(data.settings._pages.custom_theme_url)
-    } else {
-      st.push('/assets/css/NxPages.css')
-    }
-    if(data.settings._pages.display_home_link){
-        st.push('/assets/css/NxSite.css')
-    }
-    return st;
-  }
-}
-}
----
-{% if settings._pages.display_home_link %}
+{% if settings._pages.custom_theme_url %}
+  {% set stylesheet = settings._pages.custom_theme_url %}
+{% else %}
+ {% set stylesheet = "/assets/css/NxPages.css" %}
+{% endif %}
+<!DOCTYPE html>
+<html lang="{{ settings._site.lang }}">
+  <head>
+{% include "meta.njk" %}
+ <link rel="stylesheet" type="text/css" href="{{stylesheet}}"></link>
+  {% if is_index != true and settings._pages.display_home_link %}<link rel="stylesheet" type="text/css" href="/assets/css/NxSite.css"></link>{% endif %}
+  </head>
+  <body>
+{% if is_index != true and settings._pages.display_home_link %}
   <nav class="nx-site-nav"><a href="{{settings._site.url}}/"><i class="nx-site-back"></i></a></nav>
 {% endif %}
-<main>
+<main class="nx-site-main">
 {{ content | safe }}
 </main>
+  </body>
+</html>
