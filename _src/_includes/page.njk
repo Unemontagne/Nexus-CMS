@@ -8,10 +8,10 @@
   <head>
 {% include "meta.njk" %}
  <link rel="stylesheet" type="text/css" href="{{stylesheet}}"></link>
-  {% if is_index != true and settings._pages.display_home_link %}<link rel="stylesheet" type="text/css" href="/assets/css/NxSite.css"></link>{% endif %}
+  {% if is_404 or (is_index != true and settings._pages.display_home_link) %}<link rel="stylesheet" type="text/css" href="/assets/css/NxSite.css"></link>{% endif %}
   </head>
   <body>
-{% if is_index != true and settings._pages.display_home_link %}
+{% if is_404 or (is_index != true and settings._pages.display_home_link) %}
   <nav class="nx-site-nav"><a href="{{settings._site.url}}/"><i class="nx-site-back"></i></a></nav>
 {% endif %}
 <main class="nx-site-main">
