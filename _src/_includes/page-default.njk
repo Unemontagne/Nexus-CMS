@@ -1,5 +1,0 @@
-{% for pg in collections.SitePages %}
-{% if pg.meta_filename === settings._pages.default_page %}
-{{ pg.content | safe }}
-{% endif %}
-{% endfor %}

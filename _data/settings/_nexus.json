@@ -1,7 +1,7 @@
 {
   "default_lang": "en",
   "default_instance": "demo-nexus",
-  "load_first_thread": false,
+  "load_first_thread": true,
   "script_url": "https://cdn.jsdelivr.net/gh/I-is-as-I-does/Nexus@^1.1.4/dist/js/NxFolio.js",
   "custom_theme_url": ""
 }

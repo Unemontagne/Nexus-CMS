@@ -38,7 +38,7 @@ module.exports = function(eleventyConfig) {
       });    
 
   eleventyConfig.addCollection("NxInstances", function(apiCollection) {
-    var instances = apiCollection.getAll()[0].data.instances
+    var instances = apiCollection.getAll()[0].data.nexus
     var done = []
     var insts = []
     if(instances){
@@ -51,25 +51,6 @@ module.exports = function(eleventyConfig) {
     }
 
         return insts
-  });
-
-// Short Codes
-  eleventyConfig.addShortcode("MediaUrl", function(media, host) {
-    var url = ''
-    if(media){
-      if(media.slice(0,4) === "http"){
-        url = media
-      } else if(host) {
-        if(media[0] !== "/"){
-          media = "/"+media
-        }
-        if(host.slice(-1) === "/"){
-            host = host.slice(0,-1)
-        }
-        url = host+media
-      }
-  }
-  return url
   });
 
   // Minify CSS

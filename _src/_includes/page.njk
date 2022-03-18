@@ -1,0 +1,25 @@
+---js
+{
+layout: "base.njk",
+eleventyComputed: {
+  stylesheets: data => {
+    var st = []
+    if(data.settings._pages.custom_theme_url){
+     st.push(data.settings._pages.custom_theme_url)
+    } else {
+      st.push('/assets/css/NxPages.css')
+    }
+    if(data.settings._pages.display_home_link){
+        st.push('/assets/css/NxSite.css')
+    }
+    return st;
+  }
+}
+}
+---
+{% if settings._pages.display_home_link %}
+  <nav class="nx-site-nav"><a href="{{settings._site.url}}/"><i class="nx-site-back"></i></a></nav>
+{% endif %}
+<main>
+{{ content | safe }}
+</main>

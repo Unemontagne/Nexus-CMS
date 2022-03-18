@@ -9,7 +9,7 @@ Under the hood, Nexus CMS makes use of 11ty to generate files, and Netlify CMS f
 ## Documentation
 
 Installation guide, tips and more: check the docs!  
-[nexus-dock.github.io/pages/cms](https://nexus-dock.github.io/pages/cms)
+[nexus-dock.github.io/docs/cms](https://nexus-dock.github.io/docs/cms)
 
 ## About Nexus
 

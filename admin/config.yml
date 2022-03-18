@@ -3,9 +3,9 @@ backend:
   branch: main
 media_folder: media
 collections:
-  - label: Nexus Instances
-    name: instances
-    folder: _data/instances
+  - label: Nexus
+    name: nexus
+    folder: _data/nexus
     format: json
     create: true
     identifier_field: meta_filename
@@ -13,10 +13,10 @@ collections:
     slug: '{{fields.meta_filename}}'
     fields:
       - label: Filename
-        hint: '[a-zA-Z0-9_-] [1-36] [must be unique] [should not be changed once published]'
+        hint: '[a-zA-Z0-9_-] [1-36] [must be unique] [should not be modified once published]'
         name: meta_filename
         widget: nx-unique-filename
-        category: instances
+        category: nexus
         required: true
         pattern:
           - '[a-zA-Z0-9_-]{1,36}'
@@ -66,7 +66,7 @@ collections:
         fields:
           - label: id
             name: id
-            hint: '[a-zA-Z0-9-] [3-36] [must be unique] [should not be changed once published]'
+            hint: '[a-zA-Z0-9-] [3-36] [must be unique] [should not be modified once published]'
             required: true
             widget: nx-unique-thread
             pattern:
@@ -161,7 +161,7 @@ collections:
                 pattern:
                   - '^https?:\/\/.+'
                   - '[http]'
-  - label: Static Pages
+  - label: Pages
     name: pages
     folder: _data/pages
     format: json
@@ -171,17 +171,17 @@ collections:
     slug: '{{fields.meta_filename}}'
     fields:
       - label: Filename
-        hint: '[a-zA-Z0-9_-] [1-36] [must be unique] [should not be changed once published]'
+        hint: '[a-zA-Z0-9_-] [1-36] [must be unique] [should not be modified once published]'
         name: meta_filename
         widget: nx-unique-filename
         category: pages
         required: true
         pattern:
           - '[a-zA-Z0-9_-]{1,36}'
-          - '[a-zA-Z0-9_-] [1-36] [must be unique]'
+          - '[a-zA-Z0-9_-] [1-36] [must be unique]'         
       - label: Content
         name: content
-        widget: markdown                  
+        widget: markdown     
   - label: Settings
     name: settings
     format: json
@@ -293,23 +293,18 @@ collections:
                   config:
                     multiple: false
                     max_file_size: 500000       
-      - label: Nexus Instances
-        name: _instances
-        file: _data/settings/_instances.json
+      - label: Nexus
+        name: _nexus
+        file: _data/settings/_nexus.json
         fields:
           - label: Default Nexus Instance
             name: default_instance
             widget: relation
             required: true
-            collection: instances
+            collection: nexus
             search_fields:
               - meta_filename
             value_field: meta_filename
-          - label: Load First Thread
-            name: load_first_thread
-            widget: boolean
-            default: true
-            required: true
           - label: Reader App Url
             name: script_url
             widget: string
@@ -323,13 +318,18 @@ collections:
             name: default_lang
             widget: string
             required: false
+          - label: Load First Thread
+            name: load_first_thread
+            widget: boolean
+            default: true
+            required: false
           - label: Info
             name: info
             widget: info
             text: 'Available apps, themes, languages: '
-            url: 'https://nexus-dock.github.io/nx-cms/options'
+            url: 'https://nexus-dock.github.io/docs/cms#options'
             required: false
-      - label: Static Pages
+      - label: Pages
         name: _pages
         file: _data/settings/_pages.json
         fields:
@@ -341,6 +341,11 @@ collections:
             search_fields:
               - meta_filename
             value_field: meta_filename
+          - label: Display Home Link
+            name: display_home_link
+            widget: boolean
+            required: true
+            default: true
           - label: Custom Theme Url
             name: custom_theme_url
             widget: string
@@ -350,4 +355,4 @@ collections:
             widget: info
             text: 'Drop-in alternative themes: '
             url: 'https://github.com/dohliam/dropin-minimal-css'
-            required: false
+            required: false         

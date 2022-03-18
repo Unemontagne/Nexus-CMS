@@ -1,4 +1,33 @@
 class NxSources {
+  mediaData(thread, host){
+   
+    var media = {
+      url: '',
+      type: '',
+      caption: ''
+    }
+
+    if(thread.content_media_url){    
+      if(thread.content_media_url.slice(0,4) === "http"){
+        media.url = thread.content_media_url
+      } else if(host) {
+        if(host.slice(-1) === "/"){
+          host = host.slice(0,-1)
+      }      
+      var sl = ''  
+        if(thread.content_media_url[0] !== "/"){
+          sl = '/'
+        }    
+        media.url = host+sl+thread.content_media_url
+      }
+      if(media.url){
+        media.type = thread.content_media_type ? thread.content_media_type : 'page'
+        media.caption = thread.content_media_caption ? thread.content_media_caption : ''
+      }
+  }
+
+  return media
+  }
   data() {
     return {
       pagination: {
@@ -23,15 +52,7 @@ class NxSources {
           timestamp: data.instance.threads[i].content_timestamp,
           main: data.instance.threads[i].content_main,
           aside: data.instance.threads[i].content_aside ? data.instance.threads[i].content_aside : '',
-          media: {
-            url: data.instance.threads[i].content_media_url ? data.instance.threads[i].content_media_url : '',
-            type: data.instance.threads[i].content_media_type
-              ? data.instance.threads[i].content_media_type
-              : data.instance.threads[i].content_media_url ? 'page' : '',
-            caption: data.instance.threads[i].content_media_caption
-              ? data.instance.threads[i].content_media_caption
-              : '',
-          },
+          media: this.mediaData(data.instance.threads[i], data.settings._site.url),
         },
         linked: data.instance.threads[i].linked ? data.instance.threads[i].linked.map((l) => l.url) : [],
       })

@@ -5,6 +5,7 @@ class NxData {
         deflt: ''
       }
       if(data[catg]){
+        
         nf.list = Object.values(data[catg]).map(it => it.meta_filename)
         var index = 0
         var k = 'default_'+catg.slice(0,-1)
@@ -15,10 +16,10 @@ class NxData {
             index = searchindex       
           }
         }
-        if(catg === "instances"){
+        if(catg === "nexus"){
           nf.deflt = data.settings._site.url+"/source/"+nf.list[index]+".json"
-          if(data.settings._instances.load_first_thread && data.instances[nf.list[index]].threads && data.instances[nf.list[index]].threads.length){
-            nf.deflt += "#" + data.instances[nf.list[index]].threads[0].id
+          if(data.settings._nexus.load_first_thread && data.nexus[nf.list[index]].threads && data.nexus[nf.list[index]].threads.length){
+            nf.deflt += "#" + data.nexus[nf.list[index]].threads[0].id
             }
         } else {
           nf.deflt = data.settings._site.url+"/pages/"+nf.list[index]
@@ -34,11 +35,11 @@ class NxData {
     }
     render(data) {
 
-      var instances = this.categoryInfos(data, "instances")
+      var nexus = this.categoryInfos(data, "nexus")
       var keys = ['script', 'lang', 'style'];
       var fields = ['script_url', 'default_lang', 'custom_theme_url'];
       for(var i=0; i<keys.length; i++){
-        instances[keys[i]] = data.settings._instances[fields[i]]
+        nexus[keys[i]] = data.settings._nexus[fields[i]]
       }
       var pages = this.categoryInfos(data, "pages")
       if(data.settings._pages.custom_theme_url){
@@ -46,14 +47,14 @@ class NxData {
       } else {
         pages.style = '/assets/css/NxPages.css'
       }
+      pages.back = data.settings._pages.display_home_link
       var nxdata = {
         site: {
           url: data.settings._site.url
         },
-        instances: instances,
+        nexus: nexus,
         pages: pages
       }
-
       return 'window.NxData = '+JSON.stringify(nxdata)
     }
   }

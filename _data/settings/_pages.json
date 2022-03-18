@@ -1,4 +1,5 @@
 {
   "custom_theme_url": "",
-  "default_page": "demo-page"
+  "default_page": "demo-page",
+  "display_home_link": true
 }

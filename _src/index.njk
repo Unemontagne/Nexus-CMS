@@ -1,22 +1,26 @@
 ---js
 {
-layout: "base.njk",
-permalink: "index.html",
 eleventyComputed: {
-  stylesheet: data => {
-    if(data.settings._site.front_page !== "default Nexus instance") {
-        if(data.settings._pages.custom_theme_url){
-      return data.settings._pages.custom_theme_url
-        }
-          return '/assets/css/NxPages.css'
+  layout: data => {
+    if(data.settings._site.front_page === "default Nexus instance"){
+      return "base.njk"
     }
-  return '';
+    return "page.njk" 
   }
-}
+},
+permalink: "index.html"
 }
 ---
 {% if settings._site.front_page === "default Nexus instance" %}
-{% include "nx-default.njk" %}
+{% for instance in collections.NxInstances %}
+{% if instance.meta_filename === settings._nexus.default_instance %}
+{% include "nx-snippet.njk" %}
+{% endif %}
+{% endfor %}
 {% else %}
-{% include "page-default.njk" %}
+{% for pg in collections.SitePages %}
+{% if pg.meta_filename === settings._pages.default_page %}
+{{ pg.content | safe }}
+{% endif %}
+{% endfor %}
 {% endif %}
