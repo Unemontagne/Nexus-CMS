@@ -2,7 +2,7 @@
   "lang": "en",
   "url": "",
   "name": "Nexus",
-  "description": "Nexus is a peer-to-peer Micro Social Network.",
+  "description": "Peer-to-peer Micro Social Network.",
   "front_page": "default Nexus instance",
   "favicons": {
     "favicon-ico": "/assets/meta/favicon.ico",

@@ -1,4 +1,7 @@
 class NxSources {
+  dateFormat(timestamp){
+    return new Date(timestamp).toISOString().split('T')[0]
+  }
   mediaData(thread, host){
    
     var media = {
@@ -49,7 +52,7 @@ class NxSources {
         title: data.instance.threads[i].title,
         description: data.instance.threads[i].description ? data.instance.threads[i].description : '',
         content: {
-          timestamp: data.instance.threads[i].content_timestamp,
+          timestamp: this.dateFormat(data.instance.threads[i].content_timestamp),
           main: data.instance.threads[i].content_main,
           aside: data.instance.threads[i].content_aside ? data.instance.threads[i].content_aside : '',
           media: this.mediaData(data.instance.threads[i], data.settings._site.url),
