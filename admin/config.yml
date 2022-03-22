@@ -54,7 +54,7 @@ collections:
               - '[http]'
       - label: Threads
         name: threads
-        collapsed: false
+        collapsed: true
         required: true
         widget: list
         allow_add: true
