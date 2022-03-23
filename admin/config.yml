@@ -308,7 +308,7 @@ collections:
           - label: Reader App Url
             name: script_url
             widget: string
-            default: https://cdn.jsdelivr.net/gh/I-is-as-I-does/Nexus@^1.1.6/dist/js/NxFolio.js
+            default: https://cdn.jsdelivr.net/gh/I-is-as-I-does/Nexus@^1.1.8/dist/js/NxFolio.js
             required: true
           - label: Custom Theme Url
             name: custom_theme_url
