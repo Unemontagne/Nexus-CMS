@@ -1,0 +1,74 @@
+{
+  "nexus": "https://nexus-dock.github.io/",
+  "author": {
+    "handle": "mondesheureux.net",
+    "about": "",
+    "url": "http://mondesheureux.net"
+  },
+  "threads": [
+    {
+      "id": "Transmissions-Vegetales",
+      "title": "Transmissions Végétales",
+      "description": "Transmissions Végétales est une recherche artistique sur les relations plantes-humains, menée par Nicolas Guillemin et Agnès Prévost. Les deux artistes s’intéressent à la nature et à la profondeur des liens qui unissent les humains aux plantes.",
+      "content": {
+        "timestamp": "2022-02-08T14:23",
+        "main": "Transmissions végétales invite à se plonger dans les relations plantes-humains. Pour mener cette recherche, les artistes Agnès Prévost et Nicolas Guillemin parcourent des lieux propices aux alliances entre végétaux et humains : jardins, arboretums, intérieurs domestiques ou professionnels… Ils sont particulièrement attentifs aux phénomènes physiques, aux interactions sensibles, affectives ou économiques dont tous ces êtres dépendent : les échanges gazeux impliqués dans la respiration ou la prodigalité d’une terre par exemples. Ils regardent comment la vie des plantes – leurs formes, leur sensibilité, leur être-au-monde propres – agit sur le monde et la perception humains.",
+        "aside": "",
+        "media": {
+          "url": "https://mondesheureux.files.wordpress.com/2022/02/tacuinum_sanitatis_indianische_nuls.png",
+          "type": "image",
+          "caption": ""
+        }
+      },
+      "linked": []
+    },
+    {
+      "id": "Cabaret-Courant-Faible",
+      "title": "Cabaret Courant Faible",
+      "description": "Le Cabaret courant faible propose à des artistes liés aux arts visuels, peintres, sculpteurs, photographes, etc., ainsi qu’à des théoriciens, de créer des numéros, ces numéros pouvant aussi faire appel à d’autres disciplines rappelant le cabaret : théâtre, danse, chant… Le Cabaret est coordonné par Elise Vandewalle et Nicolas Guillemin.",
+      "content": {
+        "timestamp": "2022-02-08T14:24",
+        "main": "Anti-CV : \"Le CV montre un monde lisse de réussites professionnelles. Dans l’art spécialement, comme dans le monde dégradé du travail néo- libéral, c’est particulièrement ironique ou cruel. Car la réalité de ce parcours de vie est souvent à l’inverse de ce vernis clinquant : galères en tout genre, jobs de merde, expositions non rémunérées, mépris des supérieurs , exclusion sexiste et raciale...\"",
+        "aside": "",
+        "media": {
+          "url": "https://mondesheureux.files.wordpress.com/2020/09/driss-hadria-photographe-doc.jpg",
+          "type": "image",
+          "caption": ""
+        }
+      },
+      "linked": []
+    },
+    {
+      "id": "Plotter-machine-a-dessiner",
+      "title": "Plotter - machine à dessiner",
+      "description": "J'ai fabriqué une machine à dessiner, une traceuse numérique. En plus, de reprendre la main sur une production mécanisée d’oeuvres d’art, cette expérience fait aussi entrevoir un autre rapport à la machine, moins basé sur la servilité que sur l’apprentissage, le tâtonnement, la familiarité.",
+      "content": {
+        "timestamp": "2022-02-08T14:26",
+        "main": "Tous les dessinateurs qui utilisent l’ordinateur ont un jour ressenti cette frustration de ne pouvoir assurer une continuité entre leur savoir-faire, la relation entre le crayon et le papier, le tracé, et leur travail à l’aide des logiciels de dessin sur l’ordinateur. Les techniques d’impression par ordinateur accessibles sont étonnamment fermées et peu nombreuses.",
+        "aside": "",
+        "media": {
+          "url": "https://mondesheureux.files.wordpress.com/2018/11/capture-d_c3a9cran-2018-11-29-c3a0-15-10-43.png?w=656",
+          "type": "image",
+          "caption": ""
+        }
+      },
+      "linked": []
+    },
+    {
+      "id": "Nexus",
+      "title": "Nexus",
+      "description": "Nexus est une application de partage et d’association de contenu pair-à-pair indépendante des géants du web.\n\nNexus a été développé par Muriel Leray à partir d'une idée de Nicolas Guillemin.",
+      "content": {
+        "timestamp": "2022-02-08T14:26",
+        "main": "Un nexus est une pelote de fils, chaque fil tissant une publication personnelle avec des publications d’autres nexus. \n\nLe nexus nous permet d’organiser notre attention aux autres, aux personnes qui comptent et d’éviter la course à la visibilité des réseaux sociaux existants.\n\nL’ambition du nexus serait également de redonner une place à la réflexion, à l’invention, à la recherche ou au doute dans notre présence commune sur internet.\n\nAvec le nexus, vous pouvez déposer les éléments d’une réalisation ou d’une mémoire, des choses fragiles ou imparfaites, précieuses, profondes.\n\nToutes ces pelotes forment ensemble un tissu moiré et changeant, une mosaïque miroitante de nos préoccupations tissées entre elles.",
+        "aside": "",
+        "media": {
+          "url": "https://mondesheureux.files.wordpress.com/2022/02/noeuds_.jpg",
+          "type": "image",
+          "caption": ""
+        }
+      },
+      "linked": []
+    }
+  ]
+}
